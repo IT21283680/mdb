@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask CRUD App</title>
+</head>
+<body>
+    <h1>Flask CRUD Application</h1>
+
+    <!-- List Items -->
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item['name'] }}
+                <!-- Update Form -->
+                <form action="/update/{{ item['_id'] }}" method="POST" style="display:inline;">
+                    <input type="text" name="new_name" placeholder="New Name">
+                    <button type="submit">Update</button>
+                </form>
+                <!-- Delete Button -->
+                <a href="/delete/{{ item['_id'] }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add Item Form -->
+    <form action="/add" method="POST">
+        <input type="text" name="item_name" placeholder="New Item">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
